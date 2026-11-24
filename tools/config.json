@@ -1,0 +1,6 @@
+{
+  "hook_font_file": "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+  "min_duration": 15,
+  "max_duration": 35,
+  "bleep": true
+}
