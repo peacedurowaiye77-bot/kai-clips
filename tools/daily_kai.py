@@ -82,7 +82,8 @@ def main():
         fresh = []
         stamp = date.today().strftime("%m%d")
         for i, c in enumerate(sorted(clips, key=lambda c: -(c.get("score") or 0)), 1):
-            name = f"f{stamp}_{i}_{re.sub(r'^\d\d_', '', c['file'])}"
+            base = re.sub(r"^\d\d_", "", c["file"])
+            name = f"f{stamp}_{i}_{base}"
             shutil.copy(outdir / c["file"], REPO / "queue" / name)
             caption = (c.get("caption") or "").strip()
             tags = " ".join(c.get("hashtags") or [])
