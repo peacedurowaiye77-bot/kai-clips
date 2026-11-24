@@ -20,6 +20,6 @@ not in the Drafts folder; TikTok's status for this is SEND_TO_USER_INBOX). The o
 6. Finish with a short message for the owner, exactly in this shape:
 
    New Kai clip in your TikTok Inbox (tap Inbox, then the TikTok system notification): <hook>
-   Post at <1:00 PM or 10:00 PM> Nigeria time. Caption to paste:
+   Post at <7:00 PM or 12:00 AM (midnight)> Nigeria time. Caption to paste:
    <caption>
    (<N> clips left in the queue)
