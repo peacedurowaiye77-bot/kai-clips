@@ -71,12 +71,18 @@ def main():
         r = sh(["bash", str(CLIPPER), url, "--clips", str(CLIPS_PER_RUN),
                 "--section", f"{hms(lo)}-{hms(hi)}"], timeout=4 * 3600, cwd=str(Path.home()))
         log = r.stdout + r.stderr
+        (work / "last_clip_run.log").write_text(log)
         m = re.findall(r"(/root/gta6-clips/\d{4}-\d\d-\d\d/[^\s]+)", log)
         if not m:
             print("RESULT: clipping produced no clips. Last lines:\n" + "\n".join(log.splitlines()[-15:]))
             return
         outdir = Path(m[-1])
         clips = json.loads((outdir / "clips.json").read_text())["clips"]
+        if not clips:
+            errors = [l for l in log.splitlines() if "failed" in l or "✗" in l]
+            print("RESULT: no clips came out (state NOT advanced, so these hours are retried). Errors:\n"
+                  + "\n".join(errors[-8:]) + f"\nFull log: {work / 'last_clip_run.log'}")
+            return
 
         queue = json.loads((REPO / "queue.json").read_text())
         fresh = []
